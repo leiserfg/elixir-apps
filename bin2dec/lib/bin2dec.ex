@@ -1,18 +1,18 @@
+use Bitwise, only_operators: true
+
 defmodule Bin2dec do
   @moduledoc """
   Documentation for Bin2dec.
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Bin2dec.hello()
-      :world
-
+      iex> Bin2dec.parseBin("101")
+      5
   """
-  def hello do
-    :world
+  @spec parseBin(String.t()) :: integer
+  def parseBin(bin_digits) do
+    bin_digits
+    |> String.to_charlist()
+    |> Enum.reduce(0, &((&2 <<< 1) + (&1 - ?0)))
   end
 end
